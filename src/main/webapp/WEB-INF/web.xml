@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <!-- Application name -->
+    <display-name>MegaCityCab</display-name>
+
+    <!-- Welcome file list: Defines the default page to show when the user visits the root of the application -->
+    <welcome-file-list>
+        <welcome-file>dashboard.jsp</welcome-file> <!-- Default page after login -->
+    </welcome-file-list>
+
+
+
+
+
+    <!-- Admin Login Servlet (Mapped using @WebServlet) -->
+    <!-- No need to declare this servlet in web.xml as it's already mapped using the @WebServlet annotation -->
+    <!--
+    <servlet>
+        <servlet-name>AdminLoginServlet</servlet-name>
+        <servlet-class>com.megacitycab.controller.AdminLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminLoginServlet</servlet-name>
+        <url-pattern>/AdminLoginServlet</url-pattern>
+    </servlet-mapping>
+    -->
+
+    <!-- Customer Login Servlet (Mapped using @WebServlet) -->
+    <!-- Same as above -->
+    <!--
+    <servlet>
+        <servlet-name>CustomerLoginServlet</servlet-name>
+        <servlet-class>com.megacitycab.controller.CustomerLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerLoginServlet</servlet-name>
+        <url-pattern>/CustomerLoginServlet</url-pattern>
+    </servlet-mapping>
+    -->
+
+    <!-- Other servlets are mapped similarly and need not be re-declared -->
+    <!--
+    <servlet>
+        <servlet-name>BookingServlet</servlet-name>
+        <servlet-class>com.megacitycab.controller.BookingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BookingServlet</servlet-name>
+        <url-pattern>/BookingServlet</url-pattern>
+    </servlet-mapping>
+    -->
+
+    <!-- Driver Servlet (Mapped using @WebServlet) -->
+    <!-- Same as above -->
+    <!--
+    <servlet>
+        <servlet-name>DriverServlet</servlet-name>
+        <servlet-class>com.megacitycab.controller.DriverServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DriverServlet</servlet-name>
+        <url-pattern>/DriverServlet</url-pattern>
+    </servlet-mapping>
+    -->
+
+    <!-- Payment Servlet (Mapped using @WebServlet) -->
+    <!-- Same as above -->
+    <!--
+    <servlet>
+        <servlet-name>PaymentServlet</servlet-name>
+        <servlet-class>com.megacitycab.controller.PaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PaymentServlet</servlet-name>
+        <url-pattern>/PaymentServlet</url-pattern>
+    </servlet-mapping>
+    -->
+
+    <!-- Logout Servlet (Mapped using @WebServlet) -->
+    <!-- Same as above -->
+    <!--
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.megacitycab.controller.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    -->
+
+</web-app>
