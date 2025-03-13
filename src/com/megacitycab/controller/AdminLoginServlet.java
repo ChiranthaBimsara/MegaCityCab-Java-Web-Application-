@@ -39,11 +39,12 @@ public class AdminLoginServlet extends HttpServlet {
                 session.setAttribute("fullName", rs.getString("FullName"));
 
                 // Redirect to the admin dashboard
-                response.sendRedirect("/MegaCityCab/dashboard.jsp");
+                response.sendRedirect("/MegaCityCab/dashboard.jsp?message=Login Successfully");
             } else {
                 // If login fails, redirect back with an error message
                 response.sendRedirect("/MegaCityCab/admin_login.jsp?error=Invalid Credentials");
             }
+            
         } catch (Exception e) {
             // Print the exception stack trace for debugging
             e.printStackTrace();

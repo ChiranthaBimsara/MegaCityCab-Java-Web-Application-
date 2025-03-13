@@ -114,8 +114,8 @@
         <!-- Additional Options -->
         <div class="text-center mt-4">
             <p class="lead">Access more features and manage your cab service efficiently.</p>
-            <a href="/payments.jsp" class="btn btn-custom"><i class="fas fa-credit-card"></i> Manage Payments</a>
-            <a href="/view_cars.jsp" class="btn btn-custom"><i class="fas fa-car-side"></i> View Cars</a>
+            
+            <a href="/MegaCityCab/car.jsp" class="btn btn-custom"><i class="fas fa-car-side"></i> View Cars</a>
         </div>
 
     </div> <!-- End of container -->

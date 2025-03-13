@@ -1,4 +1,4 @@
-<%@ include file="customer_navbar.jsp" %>
+<%@ include file="navbar.jsp" %>
 <%@ page import="java.sql.Connection, java.sql.PreparedStatement, java.sql.ResultSet" %>
 <%@ page import="com.megacitycab.db.DBConnection" %>
 

@@ -77,6 +77,8 @@
                 <hr>
 
                 <form action="BookingServlet" method="post">
+                    <input type="hidden" name="action" value="create"> <!-- Specify the action as 'create' -->
+
                     <!-- Customer ID -->
                     <div class="mb-3">
                         <label for="customerID" class="form-label"><i class="fa-solid fa-user"></i> Customer ID</label>

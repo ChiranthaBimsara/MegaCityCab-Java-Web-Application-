@@ -47,30 +47,30 @@
     <div class="login-container">
         <h2><i class="fa-solid fa-user-circle"></i> Customer Login</h2>
 
-        <!-- Display success or error message -->
-        <% if(request.getParameter("error") != null) { %>
-            <div class="alert alert-danger"><i class="fa-solid fa-triangle-exclamation"></i> Invalid Username or Password</div>
-        <% } %>
-        <% if(request.getParameter("success") != null) { %>
-            <div class="alert alert-success"><i class="fa-solid fa-circle-check"></i> Successfully Logged In!</div>
-        <% } %>
+
+<!-- Show Registration Success Message -->
+<% if(request.getParameter("success") != null) { %>
+    <div class="alert alert-success"><i class="fa-solid fa-circle-check"></i> <%= request.getParameter("success") %></div>
+<% } %>
 
         <!-- Login Form -->
-        <form action="<%=request.getContextPath()%>/CustomerLoginServlet" method="post">
-            <div class="mb-3 input-group">
-                <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
-                <input type="text" name="username" class="form-control" placeholder="Username" required>
-            </div>
-            <div class="mb-3 input-group">
-                <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
-                <input type="password" name="password" class="form-control" placeholder="Password" required>
-            </div>
-            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
-        </form>
+   <form action="<%=request.getContextPath()%>/CustomerLoginServlet" method="post">
+    <div class="mb-3 input-group">
+        <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+        <input type="text" name="username" class="form-control" placeholder="Username" required>
+    </div>
+    <div class="mb-3 input-group">
+        <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+        <input type="password" name="password" class="form-control" placeholder="Password" required>
+    </div>
+    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+</form>
 
-        <div class="mt-3">
-            <p>Don't have an account? <a href="register_customer.jsp" class="link-text"><i class="fa-solid fa-user-plus"></i> Register here</a></p>
-        </div>
+<!-- Show only login success message when actual login occurs -->
+<% if(request.getParameter("error") != null) { %>
+    <div class="alert alert-danger"><i class="fa-solid fa-triangle-exclamation"></i> Invalid Username or Password</div>
+<% } %>
+
     </div>
 
     <!-- Bootstrap JS and dependencies -->

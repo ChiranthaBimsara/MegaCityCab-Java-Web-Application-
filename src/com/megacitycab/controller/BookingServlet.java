@@ -15,12 +15,45 @@ public class BookingServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
+        String action = request.getParameter("action");  // Get the action parameter from the form
 
-        if ("update".equals(action)) {
+        if ("create".equals(action)) {
+            createBooking(request, response);  // Add the create booking functionality
+        } else if ("update".equals(action)) {
             updateBooking(request, response);
         } else if ("delete".equals(action)) {
             deleteBooking(request, response);
+        }
+    }
+
+    // Create a new booking
+    private void createBooking(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int customerID = Integer.parseInt(request.getParameter("customerID"));
+        int driverID = Integer.parseInt(request.getParameter("driverID"));
+        String pickupLocation = request.getParameter("pickupLocation");
+        String destination = request.getParameter("destination");
+        double totalAmount = Double.parseDouble(request.getParameter("totalAmount"));
+        String status = "Booked";  // Initially setting status as "Booked"
+
+        try (Connection conn = DBConnection.getConnection()) {
+            String query = "INSERT INTO bookings (CustomerID, DriverID, PickupLocation, Destination, TotalAmount, Status) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, customerID);
+            ps.setInt(2, driverID);
+            ps.setString(3, pickupLocation);
+            ps.setString(4, destination);
+            ps.setDouble(5, totalAmount);
+            ps.setString(6, status);
+
+            int rowsInserted = ps.executeUpdate();
+            if (rowsInserted > 0) {
+                response.sendRedirect("bookingdetails4customer.jsp?success=Booking Created Successfully");
+            } else {
+                response.sendRedirect("create_booking.jsp?error=Error Creating Booking");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("create_booking.jsp?error=Error Creating Booking");
         }
     }
 
@@ -63,9 +96,9 @@ public class BookingServlet extends HttpServlet {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, bookingID);
             ps.executeUpdate();
-            response.sendRedirect("booking_details.jsp?success=Booking Deleted Successfully");
+            response.sendRedirect("bookingdetails4customer.jsp?success=Booking Deleted Successfully");
         } catch (Exception e) {
-            response.sendRedirect("booking_details.jsp?error=Error Deleting Booking");
+            response.sendRedirect("bookingdetails4customer.jsp?error=Error Deleting Booking");
         }
     }
 }

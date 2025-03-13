@@ -89,7 +89,7 @@
                         </span>
                     </td>
                     <td>
-                        <a href="edit_booking.jsp?bookingID=<%= rs.getInt("BookingID") %>" class="btn btn-warning btn-sm btn-custom"><i class="fas fa-edit"></i> Edit</a>
+                        <a href="adminEdit_booking.jsp?bookingID=<%= rs.getInt("BookingID") %>" class="btn btn-warning btn-sm btn-custom"><i class="fas fa-edit"></i> Edit</a>
 
                     </td>
                 </tr>

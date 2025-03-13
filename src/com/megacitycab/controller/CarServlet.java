@@ -43,4 +43,32 @@ public class CarServlet extends HttpServlet {
             response.sendRedirect("/MegaCityCab/car.jsp?error=Database Error: " + e.getMessage());
         }
     }
+    // Handle the delete request
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if ("delete".equals(action)) {
+            int carID = Integer.parseInt(request.getParameter("carID"));
+            deleteCar(carID, response);
+        }
+    }
+
+    // Delete the car from the database
+    private void deleteCar(int carID, HttpServletResponse response) throws IOException {
+        try (Connection conn = DBConnection.getConnection()) {
+            String query = "DELETE FROM Cars WHERE CarID=?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, carID);
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                response.sendRedirect("/MegaCityCab/car.jsp?success=Car Deleted Successfully");
+            } else {
+                response.sendRedirect("/MegaCityCab/car.jsp?error=Error Deleting Car");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            response.sendRedirect("/MegaCityCab/car.jsp?error=Database Error: " + e.getMessage());
+        }
+    }
 }

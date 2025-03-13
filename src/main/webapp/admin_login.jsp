@@ -45,13 +45,14 @@
     <div class="login-container">
         <h2 class="text-center"><i class="fas fa-user-shield"></i> Admin Login</h2>
 
-        <!-- Display success message after logout -->
+        <!-- Display success message after login success -->
         <% if(request.getParameter("message") != null) { %>
-            <div class="alert alert-success text-center">
-                <%= request.getParameter("message") %>
-            </div>
+            <script>
+            window.onload = function() {
+                alert('Login Successfully!');
+            };
+        </script>
         <% } %>
-
         <!-- Error message if login fails -->
         <% if(request.getParameter("error") != null) { %>
             <div class="alert alert-danger text-center">Invalid Username or Password</div>
