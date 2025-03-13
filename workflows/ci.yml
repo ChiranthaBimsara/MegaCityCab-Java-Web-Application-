@@ -1,0 +1,38 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+
+      - name: Set up Tomcat 9
+        run: |
+          sudo apt-get install -y tomcat9
+          sudo systemctl start tomcat9
+
+      - name: Build and Deploy Java Web Application
+        run: |
+          cd /path/to/your/webapp
+          javac -d bin src/**/*.java
+          jar -cvf mywebapp.war -C bin/ .
+          sudo mv mywebapp.war /var/lib/tomcat9/webapps/
+
+      - name: Run Tests (Optional)
+        run: |
+          echo "Running tests..."
